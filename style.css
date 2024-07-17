@@ -167,7 +167,7 @@ nav ul li {
   background-color: #ccff00; /* Adjust to your highlight color */
   color: #333; /* Adjust text color for better readability */
 }
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .container {
     padding: 5px; /* Further adjust padding for smaller screens */
   }
@@ -179,4 +179,4 @@ nav ul li {
   .songinfo {
     left: 1vw; /* Further adjust left position */
   }
-}
+} */
