@@ -3,7 +3,7 @@
 
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: antiquewhite;
+  background-color: black;
   margin: 0;
   padding: 0;
 }
@@ -22,7 +22,7 @@ nav ul {
   list-style-type: none;
   align-items: center;
   height: 65px;
-  background-color: black;
+  background-color: #2e6c2e;
   color: white;
 }
 
@@ -45,7 +45,7 @@ nav ul li {
 .container {
   min-height: 72vh;
   background-color: black;
-  color: white;
+  color: pink;
   font-family: "Ubuntu", sans-serif;
   display: flex;
   width: 70%;
@@ -61,88 +61,83 @@ nav ul li {
 
 .bottom {
   position: sticky;
-  height: 70px;
+  height: 130px;
   background-color: whitesmoke; /*play button color */
+  color: green;
   bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-
 .icons {
   margin-top: 1px;
 }
-
 .icons i {
   cursor: pointer;
   font-size: 3rem;
   transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
 }
-
 .icons i.fa-circle-play {
   color: red;
+  transition: transform 0.2s;
+  align-items: center;
 }
 
 .icons i.fa-circle-pause {
   color: rgb(0, 255, 60);
+  transition: transform 0.2s;
+  transform: scale(1.2);
 }
-
 #myProgressBar {
   width: 80vw;
   text-align: center;
   cursor: pointer;
 }
-
-.songItemContainer {
-  margin-top: 34px;
+.songitemcontainer {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
 .songItem {
   height: 50px;
   display: flex;
-  background-color: white;
-  color: black;
-  margin: 12px 0;
-  justify-content: space-between;
+  background-color: #fff;
+  color: #000;
+  margin: 12px;
+  justify-content: space-around;
   align-items: center;
-  border-radius: 34px;
+  border-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+  width: 200px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .songItem img {
-  width: 43px;
-  margin: 0 23px;
-  border-radius: 34px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
-
 .timestamp {
-  margin: 0 23px;
+  font-size: 0.8rem;
+  color: #777;
 }
-
 .timestamp i {
-  margin: 0 23px;
   cursor: pointer;
 }
-
-.songinfo {
+.songInfo {
   position: absolute;
   left: 10vw;
   font-family: "Ubuntu", sans-serif;
 }
-
-.songInfo img {
+.songinfo img {
   opacity: 0;
   transition: opacity 0.4s ease-in;
 }
-
-.fa-circle-play, .fa-circle-pause {
-  transition: transform 0.2s;
-}
-
-.fa-circle-play:active, .fa-circle-pause:active {
-  transform: scale(1.2);
-}
-
 .sparkle {
   position: absolute;
   width: 50px;
@@ -152,31 +147,78 @@ nav ul li {
   animation: sparkle-animation 0.5s linear infinite;
   opacity: 1;
 }
-
 @keyframes sparkle-animation {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 0;
     transform: scale(0.5) translate(0, 0);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.5) translate(calc(var(--sparkle-x) * 1px), calc(var(--sparkle-y) * 1px));
+    opacity: 0.7;
+    transform: scale(1.5)
+      translate(calc(var(--sparkle-x) * 1px), calc(var(--sparkle-y) * 2px));
   }
 }
 .songItem.active {
   background-color: #ccff00; /* Adjust to your highlight color */
   color: #333; /* Adjust text color for better readability */
 }
-/* @media screen and (max-width: 480px) {
+@media screen and (max-width: 480px) {
   .container {
-    padding: 5px; /* Further adjust padding for smaller screens */
+    padding: 5px;
   }
 
+  .brand img {
+    width: 30px;
+    margin-right: 10px;
+  }
+
+  /* Song list styles */
+  .songList {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .songList h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .songItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .songName {
+    flex-grow: 1;
+    font-weight: bold;
+  }
+
+
+   .songItem.active {
+    background-color: #ccff00; /* Adjust to your highlight color */
+    color: #333; /* Adjust text color for better readability */
+  }
+
+  
+.songinfo span {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #333;
+}
+
+  #masterSongName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    padding:10px;
+    align-items: center;
+  }
   .icons i {
-    font-size: 10rem; /* Further adjust icon size */
+    font-size: 2rem; /* Adjust icon size for smaller screens */
   }
 
   .songinfo {
     left: 1vw; /* Further adjust left position */
   }
-} */
+}
