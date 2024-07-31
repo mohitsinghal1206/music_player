@@ -11,10 +11,10 @@ let songItems = Array.from(document.getElementsByClassName('songItem')); // Arra
 let songs = [
   { songName: "Bhole Shankar", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" },
   { songName: "Cheques - Shubh", filePath: "songs/2.mp3", coverPath: "covers/2.jpg" },
-  { songName: "Chorni - Sidhu MooseWala", filePath: "songs/3.mp3", coverPath: "covers/3.jpg" },
+  { songName: "Chorni - Sidhu", filePath: "songs/3.mp3", coverPath: "covers/3.jpg" },
   { songName: "Soulmate", filePath: "songs/4.mp3", coverPath: "covers/4.jpg" },
   { songName: "Suniyan Suniyan", filePath: "songs/5.mp3", coverPath: "covers/5.jpg" },
-  { songName: "God Damn - Ek Tha Raja", filePath: "songs/6.mp3", coverPath: "covers/6.jpg" },
+  { songName: "God Damn - Karan Aujla", filePath: "songs/6.mp3", coverPath: "covers/6.jpg" },
   { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "covers/7.jpg" },
   { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "covers/8.jpg" },
   { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "covers/9.jpg" },
@@ -105,3 +105,26 @@ audioElement.addEventListener("timeupdate", () => {
 myProgressBar.addEventListener("change", () => {
   audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
 });
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const masterPlayButton = document.getElementById('masterPlay');
+  const sparkleElement = document.getElementById('sparkle');
+
+  masterPlayButton.addEventListener('click', () => {
+    // Random position for the sparkle effect
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+
+    sparkleElement.style.left = `${x}px`;
+    sparkleElement.style.top = `${y}px`;
+
+    // Add class to trigger animation
+    sparkleElement.classList.add('active');
+
+    // Remove the class after animation ends to reset
+    setTimeout(() => {
+      sparkleElement.classList.remove('active');
+    }, 500); // Duration should match the animation duration
+  });
+});
+
