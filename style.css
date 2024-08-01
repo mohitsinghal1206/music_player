@@ -176,21 +176,53 @@ nav ul li {
   animation: pulse 1s infinite;
   color: #ff6b6b; /* Change text color when playing */
 }
-/* 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 10px #ff6b6b;
-  }
-  50% {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px #ff6b6b;
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px #ff6b6b;
-  }
-} */
+
+
+/* Volume Slider Container */
+.volume-slider-container {
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+}
+
+/* Volume Slider */
+#volumeSlider {
+  -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+  width: 83px; /* Adjust width as needed */
+  height: 6px; /* Adjust thickness */
+  background: #fefdff;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+/* Volume Slider Thumb */
+#volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px; /* Width of the thumb */
+  height: 15px; /* Height of the thumb */
+  border-radius: 10%;
+  background: #691b6a;
+  cursor: pointer;
+}
+
+#volumeSlider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+
+/* Volume Icon (if you have one) */
+#volumeIcon {
+  font-size: 19px;
+  color: white;
+}
+
+
 
 @media screen and (max-width: 480px) {
   .container {
@@ -240,7 +272,7 @@ nav ul li {
     font-weight: bold;
     color: white;
     padding: 10px;
-    padding-left: 5px
+    padding-left: 5px;
   }
   #gif {
     position: absolute;
@@ -249,7 +281,6 @@ nav ul li {
     height: 27px;
     left: -26px;
   }
-  
 
   .icons i {
     font-size: 2rem; /* Adjust icon size for smaller screens */
@@ -258,7 +289,4 @@ nav ul li {
   .songinfo {
     left: 2vw; /* Further adjust left position */
   }
-  
 }
-
-
