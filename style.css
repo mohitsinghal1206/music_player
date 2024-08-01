@@ -57,7 +57,7 @@ nav ul li {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+   background-attachment: fixed; 
 }
 
 .bottom {
@@ -195,6 +195,7 @@ nav ul li {
 @media screen and (max-width: 480px) {
   .container {
     padding: 5px;
+    background-attachment: local;
   }
 
   .brand img {
