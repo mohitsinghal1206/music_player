@@ -4,10 +4,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Kalnia+Glaze:wght@100..700&family=Playwrite+AR:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap");
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: #5e1c1c;
+  background-image: url("images/bodyBg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   margin: 0;
   padding: 0;
 }
+
 
 * {
   margin: 0;
@@ -23,8 +27,8 @@ nav ul {
   list-style-type: none;
   align-items: center;
   height: 65px;
-  background-color: #702570;
-  color: white;
+  background-color: #3b2570;
+  color: #6dc17a;
 }
 
 nav ul li {
@@ -188,7 +192,7 @@ nav ul li {
 
 /* Volume Slider */
 #volumeSlider {
-  -webkit-appearance: none; /* Remove default styling for WebKit browsers */
+  /* -webkit-appearance: none;  */
   width: 83px; /* Adjust width as needed */
   height: 6px; /* Adjust thickness */
   background: #fefdff;
