@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Kalnia+Glaze:wght@100..700&family=Playwrite+AR:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Kalnia+Glaze:wght@100..700&family=Playwrite+AR:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap");
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   background-image: url("images/bodyBg.png");
   background-size: cover;
   background-position: center;
@@ -12,14 +12,13 @@ body {
   padding: 0;
 }
 
-
 * {
   margin: 0;
   padding: 0;
 }
 
 nav {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 nav ul {
@@ -182,7 +181,6 @@ nav ul li {
   color: #ff6b6b; /* Change text color when playing */
 }
 
-
 /* Volume Slider Container */
 .volume-slider-container {
   display: flex;
@@ -220,14 +218,11 @@ nav ul li {
   cursor: pointer;
 }
 
-
 /* Volume Icon (if you have one) */
 #volumeIcon {
   font-size: 19px;
   color: white;
 }
-
-
 
 @media screen and (max-width: 480px) {
   .container {
