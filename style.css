@@ -63,7 +63,10 @@ nav ul li {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
+a {
+  text-decoration: none;
+  color: white;
+}
 .bottom {
   position: sticky;
   height: 130px;
@@ -281,7 +284,10 @@ nav ul li {
     height: 27px;
     left: -26px;
   }
-
+a {
+  text-decoration: none;
+  color: white;
+}
   .icons i {
     font-size: 2rem; /* Adjust icon size for smaller screens */
     padding-bottom: 2vw;
