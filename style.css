@@ -182,7 +182,19 @@ a {
   border: 3px solid #ff6b6b;
   animation: pulse 1s infinite;
   color: #ff6b6b; /* Change text color when playing */
+  margin-right: auto;
 }
+#shuffle {
+  cursor: pointer;
+  font-size: 1rem; /* Reduced from 3rem to 2rem */
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#shuffle.active {
+  color: #ff6b6b; /* Color when shuffle is active */
+  transform: scale(1.1); /* Slightly smaller scale */
+}
+
 
 /* Volume Slider Container */
 .volume-slider-container {
