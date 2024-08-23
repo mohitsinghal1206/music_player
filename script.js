@@ -1,13 +1,15 @@
 // Initialize variables
 let songIndex = 0;
 let audioElement = new Audio(); // Audio element
-let masterPlay = document.getElementById('masterPlay'); // Master play/pause button
-let myProgressBar = document.getElementById('myProgressBar'); // Progress bar
-let volumeSlider = document.getElementById('volumeSlider'); // Volume slider
-let gif = document.getElementById('gif'); // Placeholder for gif
-let masterSongName = document.getElementById('masterSongName'); // Display song name
-let songItems = Array.from(document.getElementsByClassName('songItem')); // Array of song items
-let volumeIcon = document.getElementById('volumeIcon'); // Volume icon element
+let masterPlay = document.getElementById("masterPlay"); // Master play/pause button
+let myProgressBar = document.getElementById("myProgressBar"); // Progress bar
+let volumeSlider = document.getElementById("volumeSlider"); // Volume slider
+let gif = document.getElementById("gif"); // Placeholder for gif
+let masterSongName = document.getElementById("masterSongName"); // Display song name
+let songItems = Array.from(document.getElementsByClassName("songItem")); // Array of song items
+let volumeIcon = document.getElementById("volumeIcon"); // Volume icon element
+let shuffleButton = document.getElementById("shuffle"); // Shuffle button
+let isShuffle = false; // Shuffle mode flag
 
 // Array of songs
 let songs = [
@@ -20,7 +22,7 @@ let songs = [
   { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "covers/7.jpg" },
   { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "covers/8.jpg" },
   { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "covers/9.jpg" },
-  { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "covers/10.jpg" },
+  { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "covers/10.jpg" }
 ];
 
 // Function to initialize song items
@@ -39,7 +41,7 @@ function playSong(index) {
   masterPlay.classList.remove("fa-circle-play");
   masterPlay.classList.add("fa-circle-pause");
   gif.style.opacity = 1;
-  
+
   // Update icons for all songs
   songItems.forEach((item, idx) => {
     if (idx === songIndex) {
@@ -65,6 +67,32 @@ function pauseSong() {
   songItems[songIndex].classList.remove("active"); // Remove active class from current song item
 }
 
+// Function to play next song
+function playNextSong() {
+  if (isShuffle) {
+    songIndex = Math.floor(Math.random() * songs.length);
+  } else {
+    songIndex = (songIndex + 1) % songs.length;
+  }
+  playSong(songIndex);
+}
+
+// Function to play previous song
+function playPreviousSong() {
+  if (isShuffle) {
+    songIndex = Math.floor(Math.random() * songs.length);
+  } else {
+    songIndex = (songIndex - 1 + songs.length) % songs.length;
+  }
+  playSong(songIndex);
+}
+
+// Function to shuffle the playlist
+function shuffleSongs() {
+  isShuffle = !isShuffle;
+  shuffleButton.classList.toggle("active", isShuffle);
+}
+
 // Event listeners for song item play buttons
 songItems.forEach((element, i) => {
   element.addEventListener("click", () => {
@@ -87,25 +115,35 @@ masterPlay.addEventListener("click", () => {
 
 // Event listener for next song button
 document.getElementById("next").addEventListener("click", () => {
-  songIndex = (songIndex + 1) % songs.length;
-  playSong(songIndex);
+  playNextSong();
 });
 
 // Event listener for previous song button
 document.getElementById("previous").addEventListener("click", () => {
-  songIndex = (songIndex - 1 + songs.length) % songs.length;
-  playSong(songIndex);
+  playPreviousSong();
+});
+
+// Event listener for shuffle button
+shuffleButton.addEventListener("click", shuffleSongs);
+
+// Ensure audio metadata is loaded to get accurate duration
+audioElement.addEventListener("loadedmetadata", () => {
+  myProgressBar.max = 100; // Set the max value of the progress bar
 });
 
 // Update progress bar based on audio current time
 audioElement.addEventListener("timeupdate", () => {
-  let progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
-  myProgressBar.value = progress;
+  if (audioElement.duration) {
+    let progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
+    myProgressBar.value = progress;
+  }
 });
 
 // Change audio current time based on progress bar change
-myProgressBar.addEventListener("change", () => {
-  audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
+myProgressBar.addEventListener("input", () => {
+  if (audioElement.duration) {
+    audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
+  }
 });
 
 // Volume control
@@ -122,22 +160,22 @@ volumeSlider.addEventListener("input", () => {
 // Function to update the volume icon
 function updateVolumeIcon() {
   if (audioElement.muted || audioElement.volume === 0) {
-    volumeIcon.classList.remove('fa-volume-high');
-    volumeIcon.classList.remove('fa-volume-down');
-    volumeIcon.classList.add('fa-volume-xmark'); // Mute icon
+    volumeIcon.classList.remove("fa-volume-high");
+    volumeIcon.classList.remove("fa-volume-down");
+    volumeIcon.classList.add("fa-volume-xmark"); // Mute icon
   } else if (audioElement.volume <= 0.5) {
-    volumeIcon.classList.remove('fa-volume-high');
-    volumeIcon.classList.remove('fa-volume-xmark');
-    volumeIcon.classList.add('fa-volume-down'); // Low volume icon
+    volumeIcon.classList.remove("fa-volume-high");
+    volumeIcon.classList.remove("fa-volume-xmark");
+    volumeIcon.classList.add("fa-volume-down"); // Low volume icon
   } else {
-    volumeIcon.classList.remove('fa-volume-xmark');
-    volumeIcon.classList.remove('fa-volume-down');
-    volumeIcon.classList.add('fa-volume-high'); // High volume icon
+    volumeIcon.classList.remove("fa-volume-xmark");
+    volumeIcon.classList.remove("fa-volume-down");
+    volumeIcon.classList.add("fa-volume-high"); // High volume icon
   }
 }
 
 // Event listener for volume icon click
-volumeIcon.addEventListener('click', () => {
+volumeIcon.addEventListener("click", () => {
   if (audioElement.muted) {
     audioElement.muted = false;
     volumeSlider.value = audioElement.volume * 100;
@@ -152,11 +190,11 @@ volumeIcon.addEventListener('click', () => {
 updateVolumeIcon(); // Set the correct icon on page load
 
 // Add sparkle effect on play button click
-document.addEventListener('DOMContentLoaded', () => {
-  const masterPlayButton = document.getElementById('masterPlay');
-  const sparkleElement = document.getElementById('sparkle');
+document.addEventListener("DOMContentLoaded", () => {
+  const masterPlayButton = document.getElementById("masterPlay");
+  const sparkleElement = document.getElementById("sparkle");
 
-  masterPlayButton.addEventListener('click', () => {
+  masterPlayButton.addEventListener("click", () => {
     // Random position for the sparkle effect
     const x = Math.random() * window.innerWidth;
     const y = Math.random() * window.innerHeight;
@@ -165,11 +203,11 @@ document.addEventListener('DOMContentLoaded', () => {
     sparkleElement.style.top = `${y}px`;
 
     // Add class to trigger animation
-    sparkleElement.classList.add('active');
+    sparkleElement.classList.add("active");
 
     // Remove the class after animation ends to reset
     setTimeout(() => {
-      sparkleElement.classList.remove('active');
+      sparkleElement.classList.remove("active");
     }, 500); // Duration should match the animation duration
   });
 });
