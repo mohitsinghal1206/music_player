@@ -10,6 +10,8 @@ let songItems = Array.from(document.getElementsByClassName("songItem")); // Arra
 let volumeIcon = document.getElementById("volumeIcon"); // Volume icon element
 let shuffleButton = document.getElementById("shuffle"); // Shuffle button
 let isShuffle = false; // Shuffle mode flag
+let currentTimeElem = document.getElementById("currentTime"); // Current time display
+let totalDurationElem = document.getElementById("totalDuration"); // Total duration display
 
 // Array of songs
 let songs = [
@@ -30,6 +32,13 @@ songItems.forEach((element, i) => {
   element.getElementsByTagName("img")[0].src = songs[i].coverPath;
   element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
 });
+
+// Function to format time in MM:SS format
+function formatTime(seconds) {
+  const minutes = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+}
 
 // Function to play a song
 function playSong(index) {
@@ -126,22 +135,21 @@ document.getElementById("previous").addEventListener("click", () => {
 // Event listener for shuffle button
 shuffleButton.addEventListener("click", shuffleSongs);
 
-// Ensure audio metadata is loaded to get accurate duration
-audioElement.addEventListener("loadedmetadata", () => {
-  myProgressBar.max = 100; // Set the max value of the progress bar
-});
-
-// Update progress bar based on audio current time
+// Update progress bar and time display based on audio current time
 audioElement.addEventListener("timeupdate", () => {
-  if (audioElement.duration) {
-    let progress = parseInt((audioElement.currentTime / audioElement.duration) * 100);
+  if (!isNaN(audioElement.duration)) {
+    let progress = (audioElement.currentTime / audioElement.duration) * 100;
     myProgressBar.value = progress;
+
+    // Update time displays
+    currentTimeElem.innerText = formatTime(audioElement.currentTime);
+    totalDurationElem.innerText = formatTime(audioElement.duration);
   }
 });
 
 // Change audio current time based on progress bar change
 myProgressBar.addEventListener("input", () => {
-  if (audioElement.duration) {
+  if (!isNaN(audioElement.duration)) {
     audioElement.currentTime = (myProgressBar.value * audioElement.duration) / 100;
   }
 });
@@ -187,27 +195,4 @@ volumeIcon.addEventListener("click", () => {
 });
 
 // Initial setup
-updateVolumeIcon(); // Set the correct icon on page load
-
-// Add sparkle effect on play button click
-document.addEventListener("DOMContentLoaded", () => {
-  const masterPlayButton = document.getElementById("masterPlay");
-  const sparkleElement = document.getElementById("sparkle");
-
-  masterPlayButton.addEventListener("click", () => {
-    // Random position for the sparkle effect
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-
-    sparkleElement.style.left = `${x}px`;
-    sparkleElement.style.top = `${y}px`;
-
-    // Add class to trigger animation
-    sparkleElement.classList.add("active");
-
-    // Remove the class after animation ends to reset
-    setTimeout(() => {
-      sparkleElement.classList.remove("active");
-    }, 500); // Duration should match the animation duration
-  });
-});
+updateVolumeIcon(); // Set
