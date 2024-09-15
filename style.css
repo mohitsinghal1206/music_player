@@ -238,6 +238,19 @@ a {
   font-size: 19px;
   color: white;
 }
+.timeInfo {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #ffffff; /* Adjust as needed */
+  margin-left: 10px;
+}
+
+#currentTime, #durationTime {
+  margin: 0 5px;
+}
+
+
 
 @media screen and (max-width: 480px) {
   .container {
