@@ -16,16 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Array of songs
   let songs = [
-      { songName: "Bhole Shankar", filePath: "songs/1.mp3", coverPath: "images/song1.jpg" },
-      { songName: "Cheques - Shubh", filePath: "songs/2.mp3", coverPath: "images/song2.jpg" },
-      { songName: "Chorni - Sidhu MooseWala", filePath: "songs/3.mp3", coverPath: "images/song3.jpg" },
-      { songName: "Soulmate", filePath: "songs/4.mp3", coverPath: "images/song4.jpg" },
-      { songName: "Suniyan Suniyan", filePath: "songs/5.mp3", coverPath: "images/song5.jpg" },
-      { songName: "God Damn - Ek Tha Raja", filePath: "songs/6.mp3", coverPath: "images/song6.jpg" },
-      { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "images/song7.jpg" },
-      { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "images/song8.jpg" },
-      { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "images/song9.jpg" },
-      { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "images/song10.jpg" }
+      { songName: "Bhole Shankar", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" },
+      { songName: "Cheques - Shubh", filePath: "songs/2.mp3", coverPath: "covers/1.jpg" },
+      { songName: "Chorni - Sidhu MooseWala", filePath: "songs/3.mp3", coverPath: "covers/1.jpg"},
+      { songName: "Soulmate", filePath: "songs/4.mp3", coverPath: "covers/1.jpg" },
+      { songName: "Suniyan Suniyan", filePath: "songs/5.mp3", coverPath: "covers/1.jpg"},
+      { songName: "God Damn - Ek Tha Raja", filePath: "songs/6.mp3", coverPath: "covers/1.jpg"},
+      { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "covers/1.jpg"},
+      { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "covers/1.jpg"},
+      { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "covers/1.jpg"},
+      { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "covers/1.jpg"}
   ];
 
   // Initialize song items
