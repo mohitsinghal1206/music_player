@@ -1,7 +1,9 @@
+/* Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Varela+Round&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Kalnia+Glaze:wght@100..700&family=Playwrite+AR:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Kalnia+Glaze:wght@100..700&family=Playwrite+AR:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap");
+
+/* Basic styling */
 body {
   font-family: "Roboto Condensed", sans-serif;
   background-image: url("images/bodyBg.png");
@@ -12,11 +14,13 @@ body {
   padding: 0;
 }
 
+/* Reset margin and padding for all elements */
 * {
   margin: 0;
   padding: 0;
 }
 
+/* Navigation styling */
 nav {
   font-family: "Roboto Condensed", sans-serif;
 }
@@ -26,7 +30,7 @@ nav ul {
   list-style-type: none;
   align-items: center;
   height: 65px;
-  background-color: #3b2570;
+  background-color: #1f006a;
   color: #6dc17a;
 }
 
@@ -46,7 +50,9 @@ nav ul li {
   font-size: 1.3rem;
 }
 
+/* Container styling */
 .container {
+  position: relative; /* Ensure the container is positioned relative to its normal position */
   min-height: 72vh;
   background-color: black;
   color: pink;
@@ -57,31 +63,38 @@ nav ul li {
   margin: 23px auto;
   border-radius: 12px;
   padding: 34px;
-  background-image: url("images/bg.jpg");
+  background-image: url(images/bg.jpg); /* Container background image */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* Ensure the z-index is higher than the background video */
+  z-index: 1; /* Keeps the container above the video */
 }
+
+
+/* Link styling */
 a {
   text-decoration: none;
   color: white;
 }
+
+/* Bottom section styling */
 .bottom {
-  position: sticky;
+  position: sticky; /* Sticky positioning */
+  bottom: 0; /* Stick to the bottom of the viewport */
   height: 130px;
-  background-color: black; /*play button color */
+  background-color: black; /* Background color of the bottom section */
   color: white;
   font-size: 25px;
-  /* font-family: "Cedarville Cursive", cursive; */
   font-family: "Kalnia Glaze", serif;
-  bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index: 2; /* Ensures it is above the container and video */
 }
 
+/* Icons styling */
 .icons {
   margin-top: 1px;
 }
@@ -104,12 +117,14 @@ a {
   transform: scale(1.2);
 }
 
+/* Progress bar styling */
 #myProgressBar {
   width: 80vw;
   text-align: center;
   cursor: pointer;
 }
 
+/* Song item container */
 .songitemcontainer {
   margin-top: 50px;
   display: flex;
@@ -117,6 +132,7 @@ a {
   justify-content: center;
 }
 
+/* Song item styling */
 .songItem {
   height: 50px;
   display: flex;
@@ -174,19 +190,21 @@ a {
 }
 
 .songItem.active {
-  background-color: #ccff00; /* Adjust to your highlight color */
-  color: #333; /* Adjust text color for better readability */
+  background-color: #ccff00; /* Highlight color */
+  color: #333; /* Text color for readability */
 }
 
 .songItem.playing {
   border: 3px solid #ff6b6b;
   animation: pulse 1s infinite;
-  color: #ff6b6b; /* Change text color when playing */
+  color: #ff6b6b; /* Text color when playing */
   margin-right: auto;
 }
+
+/* Shuffle icon styling */
 #shuffle {
   cursor: pointer;
-  font-size: 1rem; /* Reduced from 3rem to 2rem */
+  font-size: 2rem; /* Adjusted from 3rem to 2rem */
   transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
@@ -194,7 +212,6 @@ a {
   color: #ff6b6b; /* Color when shuffle is active */
   transform: scale(1.1); /* Slightly smaller scale */
 }
-
 
 /* Volume Slider Container */
 .volume-slider-container {
@@ -205,7 +222,6 @@ a {
 
 /* Volume Slider */
 #volumeSlider {
-  /* -webkit-appearance: none;  */
   width: 83px; /* Adjust width as needed */
   height: 6px; /* Adjust thickness */
   background: #fefdff;
@@ -225,7 +241,6 @@ a {
   cursor: pointer;
 }
 
-
 #volumeSlider::-moz-range-thumb {
   width: 20px;
   height: 20px;
@@ -233,11 +248,14 @@ a {
   background: #691b6a;
   cursor: pointer;
 }
-/* Volume Icon (if you have one) */
+
+/* Volume Icon */
 #volumeIcon {
   font-size: 19px;
   color: white;
 }
+
+/* Time Info */
 .timeInfo {
   display: flex;
   align-items: center;
@@ -246,12 +264,72 @@ a {
   margin-left: 10px;
 }
 
-#currentTime, #durationTime {
+#currentTime,
+#durationTime {
   margin: 0 5px;
+}
+
+/* Logo styling */
+.mytunes-logo {
+  display: block;
+  margin: 0 auto;
+  width: 150px; /* Adjust the size as necessary */
+  padding: 20px 0;
+}
+
+/* Video Background */
+#bgVideo {
+  position: fixed; /* Keeps the video fixed in place */
+  top: 0; /* Aligns to the top of the viewport */
+  left: 0; /* Aligns to the left of the viewport */
+  width: 100%; /* Covers the full width of the viewport */
+  height: 100%; /* Covers the full height of the viewport */
+  object-fit: cover; /* Ensures the video covers the container without stretching */
+  z-index: -1; /* Keeps the video behind other content */
+  opacity: 0.6; /* Optional: Adjust opacity if needed */
 }
 
 
 
+/* Container position adjustment */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Speed Control Slider */
+#speedControl {
+  -webkit-appearance: none;
+  width: 100px;
+  height: 5px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 9000000s ease-in-out;
+}
+
+#speedControl::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+#speedControl::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #4caf50;
+  cursor: pointer;
+}
+
+label[for="speedControl"] {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+/* Media Queries for mobile devices */
 @media screen and (max-width: 480px) {
   .container {
     padding: 5px;
@@ -263,7 +341,6 @@ a {
     margin-right: 10px;
   }
 
-  /* Song list styles */
   .songList {
     text-align: center;
     margin-bottom: 30px;
@@ -280,13 +357,12 @@ a {
   }
 
   .songName {
-    /* flex-grow: 1; */
     font-weight: bold;
   }
 
   .songItem.active {
-    background-color: #ccff00; /* Adjust to your highlight color */
-    color: #333; /* Adjust text color for better readability */
+    background-color: #ccff00; /* Highlight color */
+    color: #333; /* Text color for readability */
   }
 
   .songinfo span {
@@ -302,6 +378,7 @@ a {
     padding: 10px;
     padding-left: 5px;
   }
+
   #gif {
     position: absolute;
     bottom: 62px;
@@ -309,10 +386,7 @@ a {
     height: 27px;
     left: -26px;
   }
-a {
-  text-decoration: none;
-  color: white;
-}
+
   .icons i {
     font-size: 2rem; /* Adjust icon size for smaller screens */
     padding-bottom: 2vw;
