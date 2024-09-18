@@ -17,15 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
   // Array of songs
   let songs = [
       { songName: "Bhole Shankar", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" },
-      { songName: "Cheques - Shubh", filePath: "songs/2.mp3", coverPath: "covers/1.jpg" },
-      { songName: "Chorni - Sidhu MooseWala", filePath: "songs/3.mp3", coverPath: "covers/1.jpg"},
-      { songName: "Soulmate", filePath: "songs/4.mp3", coverPath: "covers/1.jpg" },
-      { songName: "Suniyan Suniyan", filePath: "songs/5.mp3", coverPath: "covers/1.jpg"},
-      { songName: "God Damn - Ek Tha Raja", filePath: "songs/6.mp3", coverPath: "covers/1.jpg"},
-      { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "covers/1.jpg"},
-      { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "covers/1.jpg"},
-      { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "covers/1.jpg"},
-      { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "covers/1.jpg"}
+      { songName: "Cheques - Shubh", filePath: "songs/2.mp3", coverPath: "covers/2.jpg" },
+      { songName: "Chorni - Sidhu MooseWala", filePath: "songs/3.mp3", coverPath: "covers/3.jpg"},
+      { songName: "Soulmate", filePath: "songs/4.mp3", coverPath: "covers/4.jpg" },
+      { songName: "Suniyan Suniyan", filePath: "songs/5.mp3", coverPath: "covers/5.jpg"},
+      { songName: "God Damn - Ek Tha Raja", filePath: "songs/6.mp3", coverPath: "covers/6.jpg"},
+      { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "covers/7.jpg"},
+      { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "covers/8.jpg"},
+      { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "covers/9.jpg"},
+      { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "covers/10.jpg"}
   ];
 
   // Initialize song items
