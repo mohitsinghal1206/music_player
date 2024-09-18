@@ -218,21 +218,21 @@ a {
 /* Volume Slider Thumb */
 #volumeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px; /* Width of the thumb */
-  height: 15px; /* Height of the thumb */
-  border-radius: 10%;
+  width: 20px;
+  height: 20px; /* Increased height for better accessibility */
+  border-radius: 50%;
   background: #691b6a;
   cursor: pointer;
 }
+
 
 #volumeSlider::-moz-range-thumb {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #ffffff;
+  background: #691b6a;
   cursor: pointer;
 }
-
 /* Volume Icon (if you have one) */
 #volumeIcon {
   font-size: 19px;
