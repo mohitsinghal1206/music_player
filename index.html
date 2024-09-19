@@ -1,182 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>myTunes- Your Music App</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
-    <link
-      rel="icon"
-      href="images/favicon_io/favicon-16x16.png"
-      sizes="16x16"
-      type="image/png"
-    />
-    <link
-      rel="icon"
-      href="images/favicon_io/favicon-32x32.png"
-      sizes="32x32"
-      type="image/png"
-    />
-    <link
-      rel="icon"
-      href="images/favicon_io/favicon-48x48.png"
-      sizes="48x48"
-      type="image/png"
-    />
-  </head>
-  <body>
-    <video id="bgVideo" autoplay muted loop>
-      <source src="images/bg2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-  </video>
-  
-    <nav>
-      <ul>
-        <li class="brand">
-          <img src="images/logo.png" alt="myTunes" />myTunes
-        </li>
-        <li>
-          <a
-            href="https://mohitsinghal1206.github.io/mini_project5_music_website/"
-            >Home</a
-          >
-        </li>
-        <!-- <li><a href="About">About</a></li> -->
-      </ul>
-    </nav>
-    <div class="container">
-      <div class="songList">
-        <h1>Trending Songs - INDIA!!</h1>
-        <div class="songitemcontainer">
-          <div class="songItem">
-            <img src="covers/1.jpg" alt="Bhole Shankaru" />
-            <span class="songName">Bhole Shankar</span>
-            <span class="songlistplay">
-              <span class="timestamp">04:05</span>
-              <i id="0" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/2.jpg" alt="Cheques - Shubh" />
-            <span class="songName">Cheques - Shubh</span>
-            <span class="songlistplay">
-              <span class="timestamp">03:03</span>
-              <i id="1" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/3.jpg" alt="Chorni - Sidhu MooseWala" />
-            <span class="songName">Chorni - Sidhu MooseWala</span>
-            <span class="songlistplay">
-              <span class="timestamp">03:01</span>
-              <i id="2" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/4.jpg" alt="Soulmate" />
-            <span class="songName">Soulmate</span>
-            <span class="songlistplay">
-              <span class="timestamp">03:33</span>
-              <i id="3" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/5.jpg" alt="Suniyan Suniyan" loading="lazy" />
-            <span class="songName">Suniyan Suniyan</span>
-            <span class="songlistplay">
-              <span class="timestamp">03:17</span>
-              <i id="4" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/5.jpg" alt="God Damn - Ek Tha Raja" />
-            <span class="songName">God Damn - Ek Tha Raja</span>
-            <span class="songlistplay">
-              <span class="timestamp">02:47</span>
-              <i id="5" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/6.jpg" alt="One-Love-Blue" />
-            <span class="songName">One-Love-Blue</span>
-            <span class="songlistplay">
-              <span class="timestamp">03:30</span>
-              <i id="6" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/7.jpg" alt="Panchayat Title" />
-            <span class="songName">Panchayat Title</span>
-            <span class="songlistplay">
-              <span class="timestamp">01:03</span>
-              <i id="7" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/1.jpg"alt="Tu Hai - Darshan Raval" />
-            <span class="songName">Tu Hai - Darshan Raval</span>
-            <span class="songlistplay">
-              <span class="timestamp">02:44</span>
-              <i id="8" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-          <div class="songItem">
-            <img src="covers/1.jpg" alt="Tauba Tauba - Bad Newz" />
-            <span class="songName">Tauba Tauba - Bad Newz</span>
-            <span class="songlistplay">
-              <span class="timestamp">03:37</span>
-              <i id="9" class="fa-solid songItemPlay fa-circle-play"></i>
-            </span>
-          </div>
-        </div>
-      </div>
-      <div class="sparkle" id="sparkle"></div>
-      <div class="songBanner"></div>
-    </div>
-    <div class="bottom">
-      <input
-        type="range"
-        name="range"
-        id="myProgressBar"
-        min="0"
-        value="0"
-        max="100"
-      />
-      <div class="icons">
-        <i id="shuffle" class="fa-3x fa-solid fa-random"></i>
-        <i id="previous" class="fa-3x fa-solid fa-backward-step"></i>
-        <i id="masterPlay" class="fa-3x fa-solid fa-circle-play"></i>
-        <i id="next" class="fa-3x fa-solid fa-forward-step"></i>
-      </div>
 
-      <div class="songinfo">
-        <img src="images/playing.gif" width="42px" alt="Playing" id="gif" />
-        <span id="masterSongName"></span>
-        <div class="timeInfo">
-          <span id="currentTime">00:00</span> / <span id="durationTime">00:00</span>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>myTunes- Your Music App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100..900&display=swap" rel="stylesheet" />
+  <link rel="icon" href="images/favicon_io/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="images/favicon_io/favicon-16x16.png" sizes="16x16" type="image/png" />
+  <link rel="icon" href="images/favicon_io/favicon-32x32.png" sizes="32x32" type="image/png" />
+  <link rel="icon" href="images/favicon_io/favicon-48x48.png" sizes="48x48" type="image/png" />
+</head>
+
+<body>
+  <video id="bgVideo" autoplay muted loop>
+    <source src="images/bg2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <nav>
+    <ul>
+      <li class="brand">
+        <img src="images/logo.png" alt="myTunes" />myTunes
+      </li>
+      <li>
+        <a href="https://mohitsinghal1206.github.io/mini_project5_music_website/">Home</a>
+      </li>
+      <!-- <li><a href="About">About</a></li> -->
+    </ul>
+  </nav>
+  
+  <div class="container">
+    <div class="songList">
+      <h1>Trending Songs - INDIA!!</h1>
+      <div class="songitemcontainer">
+        <div class="songItem">
+          <img src="covers/1.jpg" alt="Bhole Shankaru" />
+          <span class="songName">Bhole Shankar</span>
+          <span class="songlistplay">
+            <span class="timestamp">04:05</span>
+            <i id="0" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/2.jpg" alt="Cheques - Shubh" />
+          <span class="songName">Cheques - Shubh</span>
+          <span class="songlistplay">
+            <span class="timestamp">03:03</span>
+            <i id="1" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/3.jpg" alt="Chorni - Sidhu MooseWala" />
+          <span class="songName">Chorni - Sidhu MooseWala</span>
+          <span class="songlistplay">
+            <span class="timestamp">03:01</span>
+            <i id="2" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/4.jpg" alt="Soulmate" />
+          <span class="songName">Soulmate</span>
+          <span class="songlistplay">
+            <span class="timestamp">03:33</span>
+            <i id="3" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/5.jpg" alt="Suniyan Suniyan" loading="lazy" />
+          <span class="songName">Suniyan Suniyan</span>
+          <span class="songlistplay">
+            <span class="timestamp">03:17</span>
+            <i id="4" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/5.jpg" alt="God Damn - Ek Tha Raja" />
+          <span class="songName">God Damn - Ek Tha Raja</span>
+          <span class="songlistplay">
+            <span class="timestamp">02:47</span>
+            <i id="5" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/6.jpg" alt="One-Love-Blue" />
+          <span class="songName">One-Love-Blue</span>
+          <span class="songlistplay">
+            <span class="timestamp">03:30</span>
+            <i id="6" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/7.jpg" alt="Panchayat Title" />
+          <span class="songName">Panchayat Title</span>
+          <span class="songlistplay">
+            <span class="timestamp">01:03</span>
+            <i id="7" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/1.jpg" alt="Tu Hai - Darshan Raval" />
+          <span class="songName">Tu Hai - Darshan Raval</span>
+          <span class="songlistplay">
+            <span class="timestamp">02:44</span>
+            <i id="8" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
+        </div>
+        <div class="songItem">
+          <img src="covers/1.jpg" alt="Tauba Tauba - Bad Newz" />
+          <span class="songName">Tauba Tauba - Bad Newz</span>
+          <span class="songlistplay">
+            <span class="timestamp">03:37</span>
+            <i id="9" class="fa-solid songItemPlay fa-circle-play"></i>
+          </span>
         </div>
       </div>
-    
-      <div class="volume-slider-container">
-        <i id="volumeIcon" class="fa-solid fa-volume-high"></i>
-        <input type="range" id="volumeSlider" min="0" max="100" value="50" />
-      </div>
     </div>
-    <script
-      src="https://kit.fontawesome.com/a80e5d421d.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="script.js"></script>
-  </body>
+    <div class="sparkle" id="sparkle"></div>
+    <div class="songBanner"></div>
+  </div>
+  
+  <div class="songinfo">
+    <img src="images/playing.gif" width="42px" alt="Playing" id="gif" />
+    <span id="masterSongName"></span>
+    <div class="timeInfo">
+      <span id="currentTime">00:00</span> / <span id="durationTime">00:00</span>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <input type="range" name="range" id="myProgressBar" min="0" value="0" max="100" />
+    <div class="icons">
+      <i id="shuffle" class="fa-3x fa-solid fa-random"></i>
+      <i id="previous" class="fa-3x fa-solid fa-backward-step"></i>
+      <i id="masterPlay" class="fa-3x fa-solid fa-circle-play"></i>
+      <i id="next" class="fa-3x fa-solid fa-forward-step"></i>
+    </div>
+    <button id="toggleVideo" class="video-control">
+      <i class="fa-solid fa-wand-magic-sparkles" id="videoPlayIcon"></i>
+      <i class="fa-solid fa-wand-magic-sparkles" id="videoPauseIcon" style="display:none;"></i>
+      BG Effect
+    </button>
+
+    <div class="volume-slider-container">
+      <i id="volumeIcon" class="fa-solid fa-volume-high"></i>
+      <input type="range" id="volumeSlider" min="0" max="100" value="50" />
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/a80e5d421d.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+
 </html>
