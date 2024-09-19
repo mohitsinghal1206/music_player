@@ -71,19 +71,16 @@ nav ul li {
   z-index: 1; /* Keeps the container above the video */
 }
 
-
 /* Link styling */
 a {
   text-decoration: none;
   color: white;
 }
 
-/* Bottom section styling */
 .bottom {
-  position: sticky; /* Sticky positioning */
-  bottom: 0; /* Stick to the bottom of the viewport */
+  position: relative; /* Ensure the bottom section has a positioning context */
   height: 130px;
-  background-color: black; /* Background color of the bottom section */
+  background-color: black;
   color: white;
   font-size: 25px;
   font-family: "Kalnia Glaze", serif;
@@ -91,7 +88,34 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 2; /* Ensures it is above the container and video */
+  z-index: 2; 
+}
+
+#gif {
+  position: centre; 
+  bottom: 10px; 
+  left: 100px; 
+  width: 41px;
+  height: auto; 
+}
+
+/* Background Effect Button Styling */
+.bg-effect-button {
+  position: absolute; /* Position the button absolutely within the .bottom container */
+  top: 10px; /* Adjust top position as needed */
+  right: 10px; /* Adjust right position as needed */
+  font-size: 1.5rem; /* Adjust size if needed */
+  color: white;
+  background-color: #1f006a; /* Background color of the button */
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bg-effect-button:hover {
+  background-color: #6dc17a; /* Change color on hover */
 }
 
 /* Icons styling */
@@ -170,19 +194,23 @@ a {
   cursor: pointer;
 }
 
-#gif {
-  position: absolute;
-  bottom: 28px;
-  width: 120px;
-  height: 62px;
-  left: 10px;
-}
+
 
 .songInfo {
   position: absolute;
-  left: 10vw;
+  left: 10vw; 
   font-family: "Ubuntu", sans-serif;
 }
+.songinfo {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the content */
+  margin-bottom: 10px; /* Add some space below the song info */
+  color: white; /* Ensure text color is visible */
+  font-size: 1.2rem; /* Adjust font size as needed */
+}
+
+/* Adjust other styles as necessary */
 
 .songinfo img {
   opacity: 0;
@@ -201,49 +229,39 @@ a {
   margin-right: auto;
 }
 
-/* Shuffle icon styling */
-#shuffle {
-  cursor: pointer;
-  font-size: 2rem; /* Adjusted from 3rem to 2rem */
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-#shuffle.active {
-  color: #ff6b6b; /* Color when shuffle is active */
-  transform: scale(1.1); /* Slightly smaller scale */
-}
-
 /* Volume Slider Container */
 .volume-slider-container {
   display: flex;
   align-items: center;
-  margin: 0 10px;
+  margin: 0 5px;
+  width: auto;
+  max-width: 120px;
 }
 
 /* Volume Slider */
 #volumeSlider {
-  width: 83px; /* Adjust width as needed */
-  height: 6px; /* Adjust thickness */
+  width: 100%;
+  height: 3px;
   background: #fefdff;
   border-radius: 5px;
   outline: none;
   cursor: pointer;
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 /* Volume Slider Thumb */
 #volumeSlider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 20px;
-  height: 20px; /* Increased height for better accessibility */
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #691b6a;
   cursor: pointer;
 }
 
 #volumeSlider::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
   background: #691b6a;
   cursor: pointer;
@@ -251,8 +269,21 @@ a {
 
 /* Volume Icon */
 #volumeIcon {
-  font-size: 19px;
+  font-size: 16px;
   color: white;
+}
+
+/* Shuffle Icon Styling */
+#shuffle {
+  cursor: pointer;
+  font-size: 2rem; /* Adjusted from 3rem to 2rem */
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  margin-left: 10px; /* Space between slider and shuffle icon */
+}
+
+#shuffle.active {
+  color: #ff6b6b; /* Color when shuffle is active */
+  transform: scale(1.1); /* Slightly larger scale when active */
 }
 
 /* Time Info */
@@ -289,14 +320,6 @@ a {
   opacity: 0.6; /* Optional: Adjust opacity if needed */
 }
 
-
-
-/* Container position adjustment */
-.container {
-  position: relative;
-  z-index: 1;
-}
-
 /* Speed Control Slider */
 #speedControl {
   -webkit-appearance: none;
@@ -327,6 +350,25 @@ a {
 label[for="speedControl"] {
   margin-left: 10px;
   font-size: 14px;
+}
+
+.video-control {
+  font-size: 1rem;
+  color: white;
+  background-color: #1f006a;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.video-control:hover {
+  background-color: #6dc17a;
+}
+
+.video-control i {
+  margin-right: 8px;
 }
 
 /* Media Queries for mobile devices */
@@ -379,13 +421,8 @@ label[for="speedControl"] {
     padding-left: 5px;
   }
 
-  #gif {
-    position: absolute;
-    bottom: 62px;
-    width: 148px;
-    height: 27px;
-    left: -26px;
-  }
+
+
 
   .icons i {
     font-size: 2rem; /* Adjust icon size for smaller screens */
