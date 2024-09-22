@@ -50,14 +50,9 @@ nav ul li {
 }
 
 .container {
-  max-height: calc(100vh - 130px); /* Max height to prevent overflow */
-  overflow-y: auto; /* Allow vertical scrolling within the container */
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* Semi-transparent to show background */
+  max-height: calc(100vh - 130px);
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.8);
   color: pink;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
@@ -211,14 +206,19 @@ a {
 .songinfo {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the content */
+  justify-content: center; /* Change to space between or flex-start */
   margin-bottom: 10px; /* Space below */
   color: white; /* Text color */
   font-size: 1.5rem; /* Increase font size */
   background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
   padding: 10px; /* Add some padding */
   border-radius: 5px; /* Optional: round corners */
+  position: absolute; /* Position it absolutely */
+  bottom: 60px; /* Adjust this to move it up from the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center adjustment */
 }
+
 
 /* Adjust other styles as necessary */
 
