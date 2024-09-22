@@ -52,7 +52,12 @@ nav ul li {
 .container {
   max-height: calc(100vh - 130px); /* Max height to prevent overflow */
   overflow-y: auto; /* Allow vertical scrolling within the container */
-  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent to show background */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Semi-transparent to show background */
   color: pink;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
@@ -67,7 +72,6 @@ nav ul li {
   z-index: 1;
   padding: 10px; /* Optional: add padding for spacing */
 }
-
 
 /* Link styling */
 a {
@@ -152,7 +156,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 10px; /* Adjusted margin */
+  margin-top: 175px; /* Adjusted margin */
 }
 
 /* Song item styling */
@@ -454,5 +458,5 @@ label[for="speedControl"] {
   }
   .songItem {
     width: calc(100% - 24px); /* Full width with margin */
-}
+  }
 }
