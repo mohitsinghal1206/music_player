@@ -3,7 +3,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Kalnia+Glaze:wght@100..700&family=Playwrite+AR:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap");
 
-/* Basic styling */
 body {
   font-family: "Roboto Condensed", sans-serif;
   background-image: url("images/bodyBg.png");
@@ -12,9 +11,9 @@ body {
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Prevent scrolling */
 }
 
-/* Reset margin and padding for all elements */
 * {
   margin: 0;
   padding: 0;
@@ -50,25 +49,26 @@ nav ul li {
   font-size: 1.3rem;
 }
 
-/* Container styling */
 .container {
-  position: relative; /* Ensure the container is positioned relative to its normal position */
-  min-height: 72vh;
-  background-color: black;
+  height: calc(100vh - 130px); /* Full viewport height minus bottom section */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.8
+  ); /* Semi-transparent to show background */
   color: pink;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
   display: flex;
-  width: 70%;
-  margin: 23px auto;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  width: 100%; /* Full width */
   border-radius: 12px;
-  padding: 34px;
-  background-image: url(images/bg.jpg); /* Container background image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* Ensure the z-index is higher than the background video */
-  z-index: 1; /* Keeps the container above the video */
+  box-sizing: border-box; /* Include padding in width */
+  position: relative; /* Ensure proper stacking */
+  z-index: 1; /* Above the background */
 }
 
 /* Link styling */
@@ -76,11 +76,9 @@ a {
   text-decoration: none;
   color: white;
 }
-
 .bottom {
-  position: relative; /* Ensure the bottom section has a positioning context */
-  height: 130px;
-  background-color: black;
+  height: 130px; /* Fixed height */
+  background-color: black; /* Keep solid color for contrast */
   color: white;
   font-size: 25px;
   font-family: "Kalnia Glaze", serif;
@@ -88,15 +86,18 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 2; 
+  z-index: 2;
+  position: absolute; /* Position it at the bottom */
+  bottom: 0; /* Align to the bottom */
+  width: 100%; /* Full width */
 }
 
 #gif {
-  position: centre; 
-  bottom: 10px; 
-  left: 100px; 
+  position: centre;
+  bottom: 10px;
+  left: 100px;
   width: 41px;
-  height: auto; 
+  height: auto;
 }
 
 /* Background Effect Button Styling */
@@ -150,10 +151,10 @@ a {
 
 /* Song item container */
 .songitemcontainer {
-  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 10px; /* Adjusted margin */
 }
 
 /* Song item styling */
@@ -163,13 +164,19 @@ a {
   background-color: #fff;
   color: #000;
   margin: 12px;
-  justify-content: space-around;
+  justify-content: space-between; /* Changed to space-between for better layout */
   align-items: center;
   border-radius: 20px;
   padding: 10px;
   cursor: pointer;
   width: 200px;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.songItem:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  background-color: #f0f0f0;
 }
 
 .songItem img {
@@ -194,20 +201,21 @@ a {
   cursor: pointer;
 }
 
-
-
 .songInfo {
   position: absolute;
-  left: 10vw; 
+  left: 10vw;
   font-family: "Ubuntu", sans-serif;
 }
 .songinfo {
   display: flex;
   align-items: center;
   justify-content: center; /* Center the content */
-  margin-bottom: 10px; /* Add some space below the song info */
-  color: white; /* Ensure text color is visible */
-  font-size: 1.2rem; /* Adjust font size as needed */
+  margin-bottom: 10px; /* Space below */
+  color: white; /* Text color */
+  font-size: 1.5rem; /* Increase font size */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  padding: 10px; /* Add some padding */
+  border-radius: 5px; /* Optional: round corners */
 }
 
 /* Adjust other styles as necessary */
@@ -274,17 +282,6 @@ a {
 }
 
 /* Shuffle Icon Styling */
-#shuffle {
-  cursor: pointer;
-  font-size: 2rem; /* Adjusted from 3rem to 2rem */
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  margin-left: 10px; /* Space between slider and shuffle icon */
-}
-
-#shuffle.active {
-  color: #ff6b6b; /* Color when shuffle is active */
-  transform: scale(1.1); /* Slightly larger scale when active */
-}
 
 /* Time Info */
 .timeInfo {
@@ -317,7 +314,7 @@ a {
   height: 100%; /* Covers the full height of the viewport */
   object-fit: cover; /* Ensures the video covers the container without stretching */
   z-index: -1; /* Keeps the video behind other content */
-  opacity: 0.6; /* Optional: Adjust opacity if needed */
+  opacity: 100%; /* Optional: Adjust opacity if needed */
 }
 
 /* Speed Control Slider */
@@ -355,12 +352,16 @@ label[for="speedControl"] {
 .video-control {
   font-size: 1rem;
   color: white;
-  background-color: #1f006a;
+  background-color: #1f006a; /* Default color */
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.video-control.active {
+  background-color: #28a745; /* Green color when active */
 }
 
 .video-control:hover {
@@ -369,6 +370,30 @@ label[for="speedControl"] {
 
 .video-control i {
   margin-right: 8px;
+}
+#shuffle {
+  cursor: pointer;
+  font-size: 1.5rem; /* Base size for shuffle */
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  margin-left: 5px; /* Adjusted to move it closer to the next button */
+}
+
+#shuffle.active {
+  color: #ff6b6b; /* Color when shuffle is active */
+  transform: scale(1.1); /* Slightly larger scale when active */
+}
+
+/* Repeat Icon Styling */
+#repeat {
+  cursor: pointer;
+  font-size: 1.5rem; /* Base size for repeat */
+  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  margin-left: 5px; /* Adjusted to move it closer to the next button */
+}
+
+#repeat.active {
+  color: gold; /* Change color when active */
+  transform: scale(1.1); /* Slightly larger scale when active */
 }
 
 /* Media Queries for mobile devices */
@@ -420,9 +445,6 @@ label[for="speedControl"] {
     padding: 10px;
     padding-left: 5px;
   }
-
-
-
 
   .icons i {
     font-size: 2rem; /* Adjust icon size for smaller screens */
