@@ -11,7 +11,7 @@ body {
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling */
+  overflow: auto; /* Allow scrolling */
 }
 
 * {
@@ -50,25 +50,21 @@ nav ul li {
 }
 
 .container {
-  height: calc(100vh - 130px); /* Full viewport height minus bottom section */
-  background-color: rgba(
-    0,
-    0,
-    0,
-    0.8
-  ); /* Semi-transparent to show background */
+  max-height: calc(100vh - 130px); /* Max height to prevent overflow */
+  overflow-y: auto; /* Allow vertical scrolling within the container */
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent to show background */
   color: pink;
   font-family: "Ubuntu", sans-serif;
   font-weight: bold;
   display: flex;
-  flex-direction: column; /* Stack items vertically */
-  justify-content: center; /* Center content vertically */
-  align-items: center; /* Center content horizontally */
-  width: 100%; /* Full width */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   border-radius: 12px;
-  box-sizing: border-box; /* Include padding in width */
-  position: relative; /* Ensure proper stacking */
-  z-index: 1; /* Above the background */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
 }
 
 /* Link styling */
