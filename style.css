@@ -452,4 +452,7 @@ label[for="speedControl"] {
   .songinfo {
     left: 2vw; /* Further adjust left position */
   }
+  .songItem {
+    width: calc(100% - 24px); /* Full width with margin */
+}
 }
