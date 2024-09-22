@@ -151,7 +151,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 175px; /* Adjusted margin */
+  margin-top: 123px; /* Adjusted margin */
 }
 
 /* Song item styling */
@@ -206,19 +206,14 @@ a {
 .songinfo {
   display: flex;
   align-items: center;
-  justify-content: center; /* Change to space between or flex-start */
+  justify-content: center; /* Center the content */
   margin-bottom: 10px; /* Space below */
   color: white; /* Text color */
   font-size: 1.5rem; /* Increase font size */
-  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 1); /* Semi-transparent background */
   padding: 10px; /* Add some padding */
   border-radius: 5px; /* Optional: round corners */
-  position: absolute; /* Position it absolutely */
-  bottom: 60px; /* Adjust this to move it up from the bottom */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Center adjustment */
 }
-
 
 /* Adjust other styles as necessary */
 
@@ -458,5 +453,8 @@ label[for="speedControl"] {
   }
   .songItem {
     width: calc(100% - 24px); /* Full width with margin */
+  }
+  .songitemcontainer {
+    margin-top: -10px; /* Adjust as necessary */
   }
 }
