@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
     let songItems = Array.from(document.getElementsByClassName("songItem")); // Array of song items
     let volumeIcon = document.getElementById("volumeIcon"); // Volume icon element
     let shuffleButton = document.getElementById("shuffle"); // Shuffle button
+    let repeatButton = document.getElementById("repeat"); // Repeat button
     let isShuffle = false; // Shuffle mode flag
+    let isRepeat = false; // Repeat mode flag
     let currentTimeElem = document.getElementById("currentTime"); // Current time display
     let totalDurationElem = document.getElementById("durationTime"); // Total duration display
     let videoElement = document.getElementById("bgVideo"); // Video element
@@ -22,14 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
     let songs = [
         { songName: "Bhole Shankar", filePath: "songs/1.mp3", coverPath: "covers/1.jpg" },
         { songName: "Cheques - Shubh", filePath: "songs/2.mp3", coverPath: "covers/2.jpg" },
-        { songName: "Chorni - Sidhu MooseWala", filePath: "songs/3.mp3", coverPath: "covers/3.jpg"},
+        { songName: "Chorni - Sidhu MooseWala", filePath: "songs/3.mp3", coverPath: "covers/3.jpg" },
         { songName: "Soulmate", filePath: "songs/4.mp3", coverPath: "covers/4.jpg" },
-        { songName: "Suniyan Suniyan", filePath: "songs/5.mp3", coverPath: "covers/5.jpg"},
-        { songName: "God Damn - Ek Tha Raja", filePath: "songs/6.mp3", coverPath: "covers/6.jpg"},
-        { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "covers/7.jpg"},
-        { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "covers/8.jpg"},
-        { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "covers/9.jpg"},
-        { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "covers/10.jpg"}
+        { songName: "Suniyan Suniyan", filePath: "songs/5.mp3", coverPath: "covers/5.jpg" },
+        { songName: "God Damn - Ek Tha Raja", filePath: "songs/6.mp3", coverPath: "covers/6.jpg" },
+        { songName: "One-Love-Blue", filePath: "songs/7.mp3", coverPath: "covers/7.jpg" },
+        { songName: "Panchayat Title", filePath: "songs/8.mp3", coverPath: "covers/8.jpg" },
+        { songName: "Tu Hai - Darshan Raval", filePath: "songs/9.mp3", coverPath: "covers/9.jpg" },
+        { songName: "Tauba Tauba - Bad Newz", filePath: "songs/10.mp3", coverPath: "covers/10.jpg" }
     ];
   
     // Initialize song items
@@ -56,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         masterPlay.classList.remove("fa-circle-play");
         masterPlay.classList.add("fa-circle-pause");
         gif.style.opacity = 1;
-  
+
         songItems.forEach((item, idx) => {
             if (idx === songIndex) {
                 item.getElementsByClassName("songItemPlay")[0].classList.remove("fa-circle-play");
@@ -68,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 item.classList.remove("active");
             }
         });
-  
+
         // Play video when a song starts
         videoElement.play();
         videoPlayIcon.style.display = "none";
@@ -92,21 +94,20 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Play next song
     function playNextSong() {
-        if (isShuffle) {
+        if (isRepeat) {
+            loadSong(songIndex); // Repeat current song
+        } else if (isShuffle) {
             songIndex = Math.floor(Math.random() * songs.length);
+            loadSong(songIndex);
         } else {
             songIndex = (songIndex + 1) % songs.length;
+            loadSong(songIndex);
         }
-        loadSong(songIndex);
     }
   
     // Play previous song
     function playPreviousSong() {
-        if (isShuffle) {
-            songIndex = Math.floor(Math.random() * songs.length);
-        } else {
-            songIndex = (songIndex - 1 + songs.length) % songs.length;
-        }
+        songIndex = (songIndex - 1 + songs.length) % songs.length;
         loadSong(songIndex);
     }
   
@@ -114,6 +115,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function shuffleSongs() {
         isShuffle = !isShuffle;
         shuffleButton.classList.toggle("active", isShuffle);
+    }
+  
+    // Repeat functionality
+    function toggleRepeat() {
+        isRepeat = !isRepeat;
+        repeatButton.classList.toggle("active", isRepeat);
     }
   
     // Update progress bar and time displays
@@ -181,6 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("next").addEventListener("click", playNextSong);
     document.getElementById("previous").addEventListener("click", playPreviousSong);
     shuffleButton.addEventListener("click", shuffleSongs);
+    repeatButton.addEventListener("click", toggleRepeat); // Add event listener for repeat button
     videoControlButton.addEventListener("click", toggleVideo);
   
     myProgressBar.addEventListener("input", seek);
@@ -193,9 +201,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   
     audioElement.addEventListener("timeupdate", updateProgress);
-    audioElement.addEventListener("ended", playNextSong);
+    audioElement.addEventListener("ended", playNextSong); // Ensure next song plays when current ends
   
     // Ensure video is paused by default
     videoElement.pause();
-  });
-  
+});
