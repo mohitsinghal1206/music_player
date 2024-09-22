@@ -58,14 +58,16 @@ nav ul li {
   font-weight: bold;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* Start from the top */
   align-items: center;
   width: 100%;
   border-radius: 12px;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+  padding: 10px; /* Optional: add padding for spacing */
 }
+
 
 /* Link styling */
 a {
