@@ -297,6 +297,12 @@ a {
   width: 150px; /* Adjust the size as necessary */
   padding: 20px 0;
 }
+#masterSongName {
+  z-index: 10; /* Adjust as necessary */
+  position: relative; /* Ensure z-index works */
+  visibility: visible;
+  opacity: 1;
+}
 
 /* Video Background */
 #bgVideo {
