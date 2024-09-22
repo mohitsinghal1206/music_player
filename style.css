@@ -73,6 +73,7 @@ a {
   text-decoration: none;
   color: white;
 }
+
 .bottom {
   height: 130px; /* Fixed height */
   background-color: black; /* Keep solid color for contrast */
@@ -183,12 +184,6 @@ a {
   margin-right: 10px;
 }
 
-.songItem:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  background-color: #f0f0f0;
-}
-
 .timestamp {
   font-size: 0.8rem;
   color: #777;
@@ -203,6 +198,7 @@ a {
   left: 10vw;
   font-family: "Ubuntu", sans-serif;
 }
+
 .songinfo {
   display: flex;
   align-items: center;
@@ -368,6 +364,7 @@ label[for="speedControl"] {
 .video-control i {
   margin-right: 8px;
 }
+
 #shuffle {
   cursor: pointer;
   font-size: 1.5rem; /* Base size for shuffle */
@@ -451,10 +448,22 @@ label[for="speedControl"] {
   .songinfo {
     left: 2vw; /* Further adjust left position */
   }
+  
   .songItem {
     width: calc(100% - 24px); /* Full width with margin */
   }
+  
   .songitemcontainer {
     margin-top: -10px; /* Adjust as necessary */
+  }
+
+  /* Adjust bottom section on mobile */
+  .bottom {
+    font-size: 20px; /* Smaller font size for mobile */
+  }
+
+  #gif {
+    left: 10px; /* Adjust position */
+    width: 30px; /* Smaller size */
   }
 }
