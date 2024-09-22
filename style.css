@@ -439,8 +439,9 @@ label[for="speedControl"] {
   }
 
   #masterSongName {
+    visibility: hidden;
     margin-top: 10px; 
-    order: 1; /* Change order if using flexbox */
+    order: 1; /* Change order if using flexbox */ 
     margin-top: 5px; /* Adjust spacing */
 }
 
