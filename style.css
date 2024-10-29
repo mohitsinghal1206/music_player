@@ -107,14 +107,17 @@ nav ul li a:hover {
 }
 #currentTime,
 #durationTime {
-  font-size: 14px;
-  color: white;
+  font-size: 16px; /* Increase font size for better readability */
+  color: #ff6b6b; /* Change to a more vibrant color for better visibility */
+  font-weight: bold; /* Make text bold */
+  margin: 0 10px; /* Add horizontal spacing */
+  transition: color 0.3s; /* Smooth transition for color change */
 }
-/* #gif{
-  padding: 10px;
-  padding-top: 10px;
-  padding-left: 10px;
-} */
+
+#currentTime:hover,
+#durationTime:hover {
+  color: #ffffff; /* Change color on hover for better interactivity */
+}
 .songName {
   flex-grow: 1;
   margin-left: 10px;
@@ -141,7 +144,37 @@ nav ul li a:hover {
   margin-bottom: 60px; /* Add margin to create space above the bottom controls */
 }
 .timestamp {
-  margin-right: 10px;
+  display: flex;
+  align-items: center; /* Center align items vertically */
+  justify-content: space-between; /* Space between current time and duration */
+  width: 100%; /* Full width for proper spacing */
+  padding: 5px 10px; /* Add padding for breathing space */
+  background: rgba(255, 255, 255, 0.1); /* Slight background for better visibility */
+  border-radius: 5px; /* Rounded corners for a polished look */
+}
+.timeInfo {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space between current time and duration */
+  margin: 10px 0; /* Space around the time info */
+  padding: 5px 10px; /* Padding for breathing space */
+  background: rgba(255, 255, 255, 0.1); /* Slight background for contrast */
+  border-radius: 5px; /* Rounded corners for a polished look */
+  color: #ff6b6b; /* Color for the text */
+  font-size: 16px; /* Adjust font size as needed */
+  transition: background 0.3s; /* Smooth transition for hover effects */
+}
+
+.timeInfo:hover {
+  background: rgba(255, 255, 255, 0.2); /* Change background on hover */
+}
+
+.currentTime {
+  font-weight: bold; /* Make the current time bold */
+}
+
+.durationTime {
+  font-weight: normal; /* Normal weight for duration */
 }
 
 .bottom {
@@ -381,76 +414,4 @@ nav ul li a:hover {
   background: #4caf50;
   border-radius: 50%;
 }
-/* General mobile styles */
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column; /* Stack navigation items vertically */
-    align-items: flex-start; /* Align items to the left */
-  }
 
-  nav ul {
-    flex-direction: column; /* Stack links vertically */
-    margin-top: 10px; /* Space between brand and links */
-  }
-
-  nav ul li {
-    margin-left: 0; /* Remove left margin for mobile */
-    margin-bottom: 10px; /* Space between links */
-  }
-
-  .container {
-    padding: 10px; /* Reduce padding for smaller screens */
-    height: calc(100vh - 120px); /* Adjust height */
-  }
-
-  .bottom {
-    flex-direction: column; /* Stack bottom controls vertically */
-    align-items: flex-start; /* Align items to the left */
-  }
-
-  .volume-slider-container {
-    margin-top: 10px; /* Add space for the volume slider */
-  }
-
-  #myProgressBar {
-    margin: 10px 0; /* Add vertical margin */
-  }
-}
-
-/* Styles for tablets and larger screens */
-@media (min-width: 769px) and (max-width: 1024px) {
-  nav {
-    padding: 15px 30px; /* Increase padding for tablets */
-  }
-
-  .container {
-    height: calc(100vh - 140px); /* Adjust height */
-  }
-
-  .bottom {
-    padding: 10px 30px; /* Increase padding */
-  }
-
-  #myProgressBar {
-    height: 6px; /* Slightly increase height */
-  }
-}
-
-/* Large desktop styles */
-@media (min-width: 1025px) {
-  nav {
-    padding: 20px 40px; /* Increase padding for desktops */
-  }
-
-  .container {
-    height: calc(100vh - 150px); /* Maintain height */
-  }
-
-  .bottom {
-    padding: 10px 40px; /* Increase padding */
-  }
-
-  #myProgressBar {
-    height: 8px; /* Further increase height for larger screens */
-  }
-}
