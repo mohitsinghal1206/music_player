@@ -381,3 +381,76 @@ nav ul li a:hover {
   background: #4caf50;
   border-radius: 50%;
 }
+/* General mobile styles */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Stack navigation items vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack links vertically */
+    margin-top: 10px; /* Space between brand and links */
+  }
+
+  nav ul li {
+    margin-left: 0; /* Remove left margin for mobile */
+    margin-bottom: 10px; /* Space between links */
+  }
+
+  .container {
+    padding: 10px; /* Reduce padding for smaller screens */
+    height: calc(100vh - 120px); /* Adjust height */
+  }
+
+  .bottom {
+    flex-direction: column; /* Stack bottom controls vertically */
+    align-items: flex-start; /* Align items to the left */
+  }
+
+  .volume-slider-container {
+    margin-top: 10px; /* Add space for the volume slider */
+  }
+
+  #myProgressBar {
+    margin: 10px 0; /* Add vertical margin */
+  }
+}
+
+/* Styles for tablets and larger screens */
+@media (min-width: 769px) and (max-width: 1024px) {
+  nav {
+    padding: 15px 30px; /* Increase padding for tablets */
+  }
+
+  .container {
+    height: calc(100vh - 140px); /* Adjust height */
+  }
+
+  .bottom {
+    padding: 10px 30px; /* Increase padding */
+  }
+
+  #myProgressBar {
+    height: 6px; /* Slightly increase height */
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1025px) {
+  nav {
+    padding: 20px 40px; /* Increase padding for desktops */
+  }
+
+  .container {
+    height: calc(100vh - 150px); /* Maintain height */
+  }
+
+  .bottom {
+    padding: 10px 40px; /* Increase padding */
+  }
+
+  #myProgressBar {
+    height: 8px; /* Further increase height for larger screens */
+  }
+}
