@@ -66,12 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     masterPlay.addEventListener("click", function () {
         if (audioElement.paused) {
-            loadSong(songIndex); // Load song only if it's paused
+            audioElement.play(); // Just play the audio without reloading
+            updatePlayButtonStyles();
         } else {
             audioElement.pause();
             updatePlayButtonStyles();
         }
     });
+    ;
 
     // Update current time and progress bar as the song plays
     audioElement.addEventListener("timeupdate", function () {
