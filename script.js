@@ -37,35 +37,24 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
 
     function loadSong(index) {
-        // Check if the new index is different from the current one
-        if (songIndex !== index) {
-            songIndex = index;
-            audioElement.src = songs[songIndex].filePath;
-            masterSongName.innerText = songs[songIndex].songName;
+        songIndex = index;
+        audioElement.src = songs[songIndex].filePath;
+        masterSongName.innerText = songs[songIndex].songName;
 
-            // Reset currentTime only if loading a new song
-            audioElement.currentTime = 0; 
-            audioElement.play();
-            updatePlayButtonStyles();
-            updateActiveSong();
+        // Only reset currentTime if loading a new song
+        audioElement.currentTime = 0;
+        audioElement.play();
+        updatePlayButtonStyles();
+        updateActiveSong();
 
-            // Scroll to the active song item
-            songItems[songIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        // Scroll to the active song item
+        songItems[songIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-            // Update total duration here after loading the song
-            audioElement.addEventListener("loadedmetadata", function () {
-                let totalDuration = formatTime(audioElement.duration);
-                totalDurationElement.innerText = totalDuration;
-            });
-        } else {
-            // If the same song is clicked, just play or pause
-            if (audioElement.paused) {
-                audioElement.play();
-            } else {
-                audioElement.pause();
-            }
-            updatePlayButtonStyles(); // Update button styles based on current state
-        }
+        // Update total duration here after loading the song
+        audioElement.addEventListener("loadedmetadata", function () {
+            let totalDuration = formatTime(audioElement.duration);
+            totalDurationElement.innerText = totalDuration;
+        });
     }
 
     // Format time from seconds to MM:SS
@@ -76,7 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     masterPlay.addEventListener("click", function () {
-        // Play or pause the song without resetting the current time
         if (audioElement.paused) {
             loadSong(songIndex); // Load song only if it's paused
         } else {
@@ -175,9 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
     audioElement.addEventListener("ended", function () {
         console.log("Song ended, repeatState:", repeatState);
         if (repeatState === 1) {
-            loadSong(songIndex); // Repeat the current song
+            loadSong(songIndex);
+        } else if (repeatState === 2) {
+            playNextSong();
         } else {
-            playNextSong(); // Go to the next song
+            playNextSong();
         }
     });
 
@@ -204,25 +194,21 @@ document.addEventListener("DOMContentLoaded", function () {
     songItems.forEach((element, index) => {
         element.addEventListener("click", () => {
             loadSong(index);
+            updatePlayButtonStyles();
         });
     });
 
     // Function to update play button styles
     function updatePlayButtonStyles() {
-        if (audioElement.paused) {
-            masterPlay.classList.remove("fa-pause");
-            masterPlay.classList.add("fa-play");
-        } else {
-            masterPlay.classList.remove("fa-play");
-            masterPlay.classList.add("fa-pause");
-        }
+        const playButtonIcon = audioElement.paused ? "fa-play" : "fa-pause";
+        masterPlay.classList.toggle("fa-play", playButtonIcon === "fa-play");
+        masterPlay.classList.toggle("fa-pause", playButtonIcon === "fa-pause");
     }
 
-    // Function to update active song item styles
+    // Function to highlight the active song
     function updateActiveSong() {
-        songItems.forEach((item, idx) => {
-            item.classList.toggle("active", idx === songIndex);
+        songItems.forEach((item, index) => {
+            item.classList.toggle("active", index === songIndex);
         });
     }
-
 });
