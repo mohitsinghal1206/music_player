@@ -76,79 +76,56 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  // Load the selected song
   function loadSong(index) {
-    songIndex = index;
-    audioElement.src = songs[songIndex].filePath;
-    masterSongName.innerText = songs[songIndex].songName;
-    audioElement.currentTime = 0;
-    audioElement.play();
-    updatePlayButtonStyles();
-    updateActiveSong();
-  }
-
-  // Update play button styles
-  function updatePlayButtonStyles() {
-    if (audioElement.paused) {
-      masterPlay.classList.remove("fa-circle-pause");
-      masterPlay.classList.add("fa-circle-play");
-    } else {
-      masterPlay.classList.remove("fa-circle-play");
-      masterPlay.classList.add("fa-circle-pause");
+        songIndex = index;
+        audioElement.src = songs[songIndex].filePath;
+        masterSongName.innerText = songs[songIndex].songName;
+        audioElement.currentTime = 0; // Reset currentTime to 0
+        audioElement.play();
+        updatePlayButtonStyles();
+        updateActiveSong();
+    
+        // Update total duration here after loading the song
+        audioElement.addEventListener("loadedmetadata", function () {
+            let totalDuration = formatTime(audioElement.duration);
+            totalDurationElement.innerText = totalDuration;
+        });
     }
-  }
-
-  // Highlight the active song
-  function updateActiveSong() {
-    songItems.forEach((item, idx) => {
-      const songItemPlayButton = item.getElementsByClassName("songItemPlay")[0];
-      if (idx === songIndex) {
-        songItemPlayButton.classList.remove("fa-circle-play");
-        songItemPlayButton.classList.add("fa-circle-pause");
-        item.classList.add("active");
-      } else {
-        songItemPlayButton.classList.remove("fa-circle-pause");
-        songItemPlayButton.classList.add("fa-circle-play");
-        item.classList.remove("active");
-      }
+    
+    // Update total duration when a song is loaded
+    function updateTotalDuration() {
+      audioElement.addEventListener("loadedmetadata", function () {
+        let totalDuration = formatTime(audioElement.duration);
+        totalDurationElement.innerText = totalDuration;
+      });
+    }
+  
+    // Format time from seconds to MM:SS
+    function formatTime(seconds) {
+      let minutes = Math.floor(seconds / 60);
+      let secs = Math.floor(seconds % 60);
+      return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
+    }
+    masterPlay.addEventListener("click", function () {
+        if (audioElement.paused) {
+            loadSong(songIndex); // Load song only if it's paused
+        } else {
+            audioElement.pause();
+            updatePlayButtonStyles();
+        }
     });
-  }
-   // Load the selected song
-   function loadSong(index) {
-    songIndex = index;
-    audioElement.src = songs[songIndex].filePath;
-    masterSongName.innerText = songs[songIndex].songName;
-    audioElement.currentTime = 0;
-    audioElement.play();
-    updatePlayButtonStyles();
-    updateActiveSong();
-    updateTotalDuration(); // Call to update the duration when the song is loaded
-}
-
-// Update total duration when metadata is loaded
-audioElement.addEventListener("loadedmetadata", function () {
-    let totalDuration = formatTime(audioElement.duration);
-    totalDurationElement.innerText = totalDuration;
-});
-
-// Format time from seconds to MM:SS
-function formatTime(seconds) {
-    let minutes = Math.floor(seconds / 60);
-    let secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
-}
-
-// Other functions (like updatePlayButtonStyles, updateActiveSong, etc.) go here...
-
-// Update current time and progress bar as the song plays
-audioElement.addEventListener("timeupdate", function () {
-    let currentTime = formatTime(audioElement.currentTime);
-    currentTimeElement.innerText = currentTime;
-
-    let progressPercent = (audioElement.currentTime / audioElement.duration) * 100;
-    progressBar.style.width = progressPercent + "%";
-});
-
+    
+  
+    // Update current time and progress bar as the song plays
+    audioElement.addEventListener("timeupdate", function () {
+      let currentTime = formatTime(audioElement.currentTime);
+      currentTimeElement.innerText = currentTime;
+  
+      let progressPercent = (audioElement.currentTime / audioElement.duration) * 100;
+      progressBar.style.width = progressPercent + "%";
+    });
+  
+  
   // Seek functionality for progress bar
   progressContainer.addEventListener("click", function (event) {
     const width = progressContainer.clientWidth;
