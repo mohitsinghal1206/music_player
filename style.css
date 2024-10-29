@@ -1,474 +1,383 @@
-/* Import fonts */
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Kalnia+Glaze:wght@100..700&family=Playwrite+AR:wght@100..400&family=Roboto+Slab:wght@100..900&display=swap");
-
-body {
-  font-family: "Roboto Condensed", sans-serif;
-  background-image: url("images/bodyBg.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin: 0;
-  padding: 0;
-  overflow: auto; /* Allow scrolling */
-}
-
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
-/* Navigation styling */
+body {
+  background: black; /* Background color for the player */
+  color: white;
+  overflow: hidden; /* Prevent scrollbars from showing */
+}
+
+video#bgVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1; /* Keep video behind content */
+}
+
 nav {
-  font-family: "Roboto Condensed", sans-serif;
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+  background-color: rgb(3 19 63); /* Dark background */
+  padding: 10px 20px; /* Padding around the nav */
+  position: relative;
+}
+
+.brand img {
+  height: 30px; /* Adjust logo size */
+  margin-right: 10px;
 }
 
 nav ul {
   display: flex;
-  list-style-type: none;
-  align-items: center;
-  height: 65px;
-  background-color: #1f006a;
-  color: #6dc17a;
+  list-style: none; /* Remove bullets */
+  margin: 0; /* Remove default margin */
+  padding: 0;
 }
-
-nav ul li {
-  padding: 0 12px;
-}
-
-.brand img {
-  width: 44px;
-  padding: 0 8px;
-}
-
-.brand {
+nav .brand {
   display: flex;
-  align-items: center;
-  font-weight: bolder;
-  font-size: 1.3rem;
+  align-items: center; /* Center items vertically */
+}
+nav .brand img {
+  width: 50px; /* Adjust logo size as needed */
+  margin-right: 10px; /* Space between logo and text */
+}
+nav ul li {
+  margin-left: 20px; /* Space between links */
+}
+
+nav ul li a {
+  color: white; /* Link color */
+  text-decoration: none; /* Remove underline */
+  padding: 8px 15px; /* Add padding to links */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Change background on hover */
 }
 
 .container {
-  max-height: calc(100vh - 130px);
-  overflow-y: auto;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: pink;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: bold;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Start from the top */
-  align-items: center;
-  width: 100%;
-  border-radius: 12px;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-  padding: 10px; /* Optional: add padding for spacing */
+  padding: 20px;
+  overflow-y: auto; /* Allow scrolling for the song list */
+  height: calc(100vh - 150px); /* Adjust height as needed */
 }
 
-/* Link styling */
-a {
-  text-decoration: none;
-  color: white;
-}
-
-.bottom {
-  height: 130px; /* Fixed height */
-  background-color: black; /* Keep solid color for contrast */
-  color: white;
-  font-size: 25px;
-  font-family: "Kalnia Glaze", serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 2;
-  position: absolute; /* Position it at the bottom */
-  bottom: 0; /* Align to the bottom */
-  width: 100%; /* Full width */
-}
-
-#gif {
-  position: centre;
-  bottom: 10px;
-  left: 100px;
-  width: 41px;
-  height: auto;
-}
-
-/* Background Effect Button Styling */
-.bg-effect-button {
-  position: absolute; /* Position the button absolutely within the .bottom container */
-  top: 10px; /* Adjust top position as needed */
-  right: 10px; /* Adjust right position as needed */
-  font-size: 1.5rem; /* Adjust size if needed */
-  color: white;
-  background-color: #1f006a; /* Background color of the button */
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.bg-effect-button:hover {
-  background-color: #6dc17a; /* Change color on hover */
-}
-
-/* Icons styling */
-.icons {
-  margin-top: 1px;
-}
-
-.icons i {
-  cursor: pointer;
-  font-size: 3rem;
-  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-.icons i.fa-circle-play {
-  color: red;
-  transition: transform 0.2s;
-  align-items: center;
-}
-
-.icons i.fa-circle-pause {
-  color: rgb(0, 255, 60);
-  transition: transform 0.2s;
-  transform: scale(1.2);
-}
-
-/* Progress bar styling */
-#myProgressBar {
-  width: 80vw;
+.songList h1 {
+  margin-bottom: 20px;
   text-align: center;
-  cursor: pointer;
 }
 
-/* Song item container */
 .songitemcontainer {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 123px; /* Adjusted margin */
+  flex-direction: column;
 }
 
-/* Song item styling */
 .songItem {
-  height: 50px;
   display: flex;
-  background-color: #fff;
-  color: #000;
-  margin: 12px;
-  justify-content: space-between; /* Changed to space-between for better layout */
   align-items: center;
-  border-radius: 20px;
-  padding: 10px;
-  cursor: pointer;
-  width: 200px;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  padding: 10px; /* Spacing around each song item */
+  transition: background-color 0.3s; /* Smooth transition for hover effects */
 }
 
 .songItem:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  background-color: #f0f0f0;
+  background-color: rgba(255, 245, 245, 0.3); /* Highlight on hover */
 }
-
+.songItem.active {
+  background-color: rgba(255, 245, 245, 0.3); /* Highlight for the currently playing song */
+  border-radius: 5px; /* Rounded corners for the active item */
+  transform: scale(1.02); /* Slightly enlarge the active item */
+}
 .songItem img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.timestamp {
-  font-size: 0.8rem;
-  color: #777;
-}
-
-.timestamp i {
-  cursor: pointer;
-}
-
-.songInfo {
-  position: absolute;
-  left: 10vw;
-  font-family: "Ubuntu", sans-serif;
-}
-
-.songinfo {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center the content */
-  margin-bottom: 10px; /* Space below */
-  color: white; /* Text color */
-  font-size: 1.5rem; /* Increase font size */
-  background-color: rgba(0, 0, 0, 1); /* Semi-transparent background */
-  padding: 10px; /* Add some padding */
-  border-radius: 5px; /* Optional: round corners */
-}
-
-/* Adjust other styles as necessary */
-
-.songinfo img {
-  opacity: 0;
-  transition: opacity 0.4s ease-in;
+  width: 60px; /* Adjust album art size */
+  height: 60px;
+  border-radius: 5px;
 }
 
 .songItem.active {
-  background-color: #ccff00; /* Highlight color */
-  color: #333; /* Text color for readability */
+  background-color: #f0f0f0; /* Change this to your desired highlight color */
+  color: #000; /* Change text color if needed */
+}
+#currentTime,
+#durationTime {
+  font-size: 14px;
+  color: white;
+}
+/* #gif{
+  padding: 10px;
+  padding-top: 10px;
+  padding-left: 10px;
+} */
+.songName {
+  flex-grow: 1;
+  margin-left: 10px;
 }
 
-.songItem.playing {
-  border: 3px solid #ff6b6b;
-  animation: pulse 1s infinite;
-  color: #ff6b6b; /* Text color when playing */
-  margin-right: auto;
+.songlistplay {
+  display: flex;
+  align-items: center;
+}
+.songinfo {
+  position: relative; /* Ensure that the positioning is relative to the nearest positioned ancestor */
+  z-index: 10; /* Bring this element above the .bottom container */
+}
+.songItemPlay {
+  font-size: 24px; /* Adjust the size of the play/pause icon */
+  transition: color 0.3s ease; /* Smooth transition for color change */
 }
 
-/* Volume Slider Container */
+.songItem.active .songItemPlay {
+  color: #ff0000; /* Change color for the active song item icon */
+}
+
+.info-container {
+  margin-bottom: 60px; /* Add margin to create space above the bottom controls */
+}
+.timestamp {
+  margin-right: 10px;
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(18, 18, 18, 0.9);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+}
+#masterSongName {
+  display: block; /* Ensure it's a block element */
+  margin-top: 100px; /* Adjust margin to move it upwards */
+  font-size: 24px; /* Font size for the song name */
+  color: #ff6b6b; /* Change to a more prominent color */
+  text-align: center; /* Center the text */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add a shadow for better readability */
+  padding: 10px; /* Add some padding for breathing space */
+  border-radius: 5px; /* Rounded corners */
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for contrast */
+  transition: all 0.3s; /* Smooth transition for hover effects */
+}
+
+#masterSongName:hover {
+  color: #ffffff; /* Change color on hover */
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+#myProgressBar {
+  flex-grow: 1;
+  margin: 0 10px;
+  -webkit-appearance: none;
+  height: 5px;
+  background: #b3b3b3;
+  border-radius: 5px;
+}
+
+#myProgressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #ff6b6b; /* Accent color */
+  cursor: pointer;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons i {
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.icons i:hover {
+  transform: scale(1.2); /* Slight scaling on hover */
+}
+
 .volume-slider-container {
   display: flex;
   align-items: center;
-  margin: 0 5px;
-  width: auto;
-  max-width: 120px;
 }
 
-/* Volume Slider */
+.volume-slider-container i {
+  margin-right: 5px;
+}
+
 #volumeSlider {
-  width: 100%;
-  height: 3px;
-  background: #fefdff;
-  border-radius: 5px;
-  outline: none;
-  cursor: pointer;
-  margin: 0 5px;
+  margin-left: 5px;
+  width: 100px; /* Adjust volume slider width */
 }
-
-/* Volume Slider Thumb */
-#volumeSlider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #691b6a;
-  cursor: pointer;
-}
-
-#volumeSlider::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #691b6a;
-  cursor: pointer;
-}
-
-/* Volume Icon */
-#volumeIcon {
-  font-size: 16px;
-  color: white;
-}
-
-/* Shuffle Icon Styling */
-
-/* Time Info */
-.timeInfo {
+.bottom {
   display: flex;
   align-items: center;
-  font-size: 14px;
-  color: #ffffff; /* Adjust as needed */
-  margin-left: 10px;
+  justify-content: space-between;
+  padding: 10px 20px; /* Add horizontal padding */
+  background: rgba(18, 18, 18, 0.9); /* Dark background */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 10; /* Ensure it's on top of other content */
 }
 
-#currentTime,
-#durationTime {
-  margin: 0 5px;
-}
-
-/* Logo styling */
-.mytunes-logo {
-  display: block;
-  margin: 0 auto;
-  width: 150px; /* Adjust the size as necessary */
-  padding: 20px 0;
-}
-#masterSongName {
-  z-index: 10; /* Adjust as necessary */
-  position: relative; /* Ensure z-index works */
-  visibility: visible;
-  opacity: 1;
-}
-
-/* Video Background */
-#bgVideo {
-  position: fixed; /* Keeps the video fixed in place */
-  top: 0; /* Aligns to the top of the viewport */
-  left: 0; /* Aligns to the left of the viewport */
-  width: 100%; /* Covers the full width of the viewport */
-  height: 100%; /* Covers the full height of the viewport */
-  object-fit: cover; /* Ensures the video covers the container without stretching */
-  z-index: -1; /* Keeps the video behind other content */
-  opacity: 100%; /* Optional: Adjust opacity if needed */
-}
-
-/* Speed Control Slider */
-#speedControl {
+.bottom input[type="range"] {
+  flex-grow: 1;
+  margin: 0 10px; /* Space between progress bar and buttons */
   -webkit-appearance: none;
-  width: 100px;
-  height: 5px;
-  background: #ddd;
-  outline: none;
-  opacity: 0.7;
-  transition: opacity 9000000s ease-in-out;
+  height: 4px;
+  background: #b3b3b3;
+  border-radius: 5px; /* Rounded corners */
+  outline: none; /* Remove outline */
 }
 
-#speedControl::-webkit-slider-thumb {
+.bottom input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  background: #4caf50;
-  cursor: pointer;
+  width: 16px; /* Thumb size */
+  height: 16px;
+  border-radius: 50%;
+  background: #ff6b6b; /* Accent color */
+  cursor: pointer; /* Pointer cursor */
 }
 
-#speedControl::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background: #4caf50;
-  cursor: pointer;
+.bottom input[type="range"]::-webkit-slider-runnable-track {
+  background: rgba(255, 255, 255, 0.3); /* Track color */
+  border-radius: 5px; /* Rounded track */
 }
 
-label[for="speedControl"] {
-  margin-left: 10px;
-  font-size: 14px;
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons i {
+  margin: 0 10px;
+  cursor: pointer;
+  color: white; /* Icon color */
+  transition: transform 0.2s, color 0.2s;
+}
+
+.icons i:hover {
+  transform: scale(1.1); /* Slight scaling on hover */
+  color: #ff6b6b; /* Change color on hover */
 }
 
 .video-control {
-  font-size: 1rem;
-  color: white;
-  background-color: #1f006a; /* Default color */
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.video-control.active {
-  background-color: #28a745; /* Green color when active */
+  background: rgba(255, 255, 255, 0.2); /* Button background */
+  color: white; /* Button text color */
+  border: none; /* No border */
+  padding: 8px 15px; /* Button padding */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  display: flex;
+  align-items: center;
+  transition: background 0.3s, color 0.3s;
 }
 
 .video-control:hover {
-  background-color: #6dc17a;
+  background: rgba(255, 255, 255, 0.3); /* Change background on hover */
+  color: #ff6b6b; /* Change text color on hover */
 }
 
-.video-control i {
-  margin-right: 8px;
+.volume-slider-container {
+  display: flex;
+  align-items: center;
+  margin-left: 10px; /* Space from the icons */
 }
 
-#shuffle {
-  cursor: pointer;
-  font-size: 1.5rem; /* Base size for shuffle */
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  margin-left: 5px; /* Adjusted to move it closer to the next button */
+.volume-slider-container i {
+  margin-right: 5px; /* Space between icon and slider */
+  color: white; /* Icon color */
 }
 
-#shuffle.active {
-  color: #ff6b6b; /* Color when shuffle is active */
-  transform: scale(1.1); /* Slightly larger scale when active */
+#volumeSlider {
+  margin-left: 5px;
+  width: 100px; /* Adjust volume slider width */
+  -webkit-appearance: none;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3); /* Track color */
+  border-radius: 5px; /* Rounded track */
 }
 
-/* Repeat Icon Styling */
-#repeat {
-  cursor: pointer;
-  font-size: 1.5rem; /* Base size for repeat */
-  transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-  margin-left: 5px; /* Adjusted to move it closer to the next button */
+#volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; /* Thumb size */
+  height: 16px;
+  border-radius: 50%;
+  background: #ff6b6b; /* Accent color */
+  cursor: pointer; /* Pointer cursor */
 }
 
-#repeat.active {
-  color: gold; /* Change color when active */
-  transform: scale(1.1); /* Slightly larger scale when active */
-}
-
-/* Media Queries for mobile devices */
-@media screen and (max-width: 480px) {
-  .container {
-    padding: 5px;
-    background-attachment: local;
-  }
-
-  .brand img {
-    width: 30px;
-    margin-right: 10px;
-  }
-
-  .songList {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-
-  .songList h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-
-  .songItem:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-
-  .songName {
-    font-weight: bold;
-  }
-
-  .songItem.active {
-    background-color: #ccff00; /* Highlight color */
-    color: #333; /* Text color for readability */
-  }
-
-  .songinfo span {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #333;
-  }
-
-  #masterSongName {
-    visibility: hidden;
-    margin-top: 10px; 
-    order: 1; /* Change order if using flexbox */ 
-    margin-top: 5px; /* Adjust spacing */
-}
-
-  .icons i {
-    font-size: 2rem; /* Adjust icon size for smaller screens */
-    padding-bottom: 2vw;
-  }
-
-  .songinfo {
-    left: 2vw; /* Further adjust left position */
-  }
-  
-  .songItem {
-    width: calc(100% - 24px); /* Full width with margin */
-  }
-  
-  .songitemcontainer {
-    margin-top: -10px; /* Adjust as necessary */
-  }
-
-  /* Adjust bottom section on mobile */
+@media (max-width: 768px) {
   .bottom {
-    font-size: 20px; /* Smaller font size for mobile */
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  #gif {
-    left: 10px; /* Adjust position */
-    width: 30px; /* Smaller size */
+  .volume-slider-container {
+    margin-top: 10px;
   }
+
+  #myProgressBar {
+    margin: 10px 0;
+  }
+}
+#shuffle {
+  transition: background-color 0.3s ease;
+}
+
+#shuffle.shuffled {
+  background-color: #007bff; /* Change to a color that signifies active state */
+  color: white; /* Change text color */
+  border: 2px solid #0056b3; /* Optional: change border */
+}
+.fa-circle-play:before {
+  content: "\f04b"; /* Font Awesome Unicode for Play */
+  font-family: "Font Awesome 5 Free"; /* Make sure to specify the correct version */
+  font-weight: 900; /* Solid icons */
+}
+
+.fa-circle-pause:before {
+  content: "\f04c"; /* Font Awesome Unicode for Pause */
+  font-family: "Font Awesome 5 Free"; /* Make sure to specify the correct version */
+  font-weight: 900; /* Solid icons */
+}
+#masterPlay {
+  cursor: pointer;
+  font-size: 2em; /* Adjust as needed */
+}
+.progress-container {
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  cursor: pointer;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #ff4a4a;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+
+#progressBar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  background: #4caf50;
+  border-radius: 50%;
 }
