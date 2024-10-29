@@ -44,13 +44,17 @@ document.addEventListener("DOMContentLoaded", function () {
         audioElement.play();
         updatePlayButtonStyles();
         updateActiveSong();
-
+    
+        // Scroll to the active song item
+        songItems[songIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
         // Update total duration here after loading the song
         audioElement.addEventListener("loadedmetadata", function () {
             let totalDuration = formatTime(audioElement.duration);
             totalDurationElement.innerText = totalDuration;
         });
     }
+    
 
     // Format time from seconds to MM:SS
     function formatTime(seconds) {
