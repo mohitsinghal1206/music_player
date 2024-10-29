@@ -415,3 +415,23 @@ nav ul li a:hover {
   border-radius: 50%;
 }
 
+/* Default state */
+#repeat {
+  background-color: transparent;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Active state - repeat one */
+#repeat.repeat-one {
+  background-color: green; /* Change to desired color */
+  color: white; /* Text color when active */
+}
+
+/* Active state - repeat all */
+#repeat.repeat-all {
+  background-color: blue; /* Change to desired color */
+  color: white; /* Text color when active */
+}
+
+
